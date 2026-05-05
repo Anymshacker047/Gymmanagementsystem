@@ -18,9 +18,9 @@ function initDB() {
     // 2. Initialize Offers
     if (!localStorage.getItem(DB_OFFERS)) {
         const defaultOffers = [
-            { id: 'off_1', title: '1 Month Starter', price: '$40', desc: 'Access to cardio & weights.' },
-            { id: 'off_2', title: '3 Months Pro', price: '$100', desc: 'Full access + 2 PT sessions.' },
-            { id: 'off_3', title: '1 Year Elite', price: '$350', desc: 'Unlimited access + Locker + Supplements discount.' }
+            { id: 'off_1', title: '1 Month Starter', price: '₹1500', desc: 'Access to cardio & weights.' },
+            { id: 'off_2', title: '3 Months Pro', price: '₹4000', desc: 'Full access + 2 PT sessions.' },
+            { id: 'off_3', title: '1 Year Elite', price: '₹12000', desc: 'Unlimited access + Locker + Supplements discount.' }
         ];
         localStorage.setItem(DB_OFFERS, JSON.stringify(defaultOffers));
     }
@@ -28,9 +28,9 @@ function initDB() {
     // 3. Initialize Supplements
     if (!localStorage.getItem(DB_SUPPLEMENTS)) {
         const defaultSupps = [
-            { id: 'sup_1', title: 'Whey Protein Isolate', price: '$60', desc: '2kg, Chocolate flavor.', img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&auto=format&fit=crop' },
-            { id: 'sup_2', title: 'Creatine Monohydrate', price: '$25', desc: '500g, Unflavored.', img: 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&auto=format&fit=crop' },
-            { id: 'sup_3', title: 'Pre-Workout Blast', price: '$35', desc: '30 Servings, Fruit Punch.', img: 'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=500&auto=format&fit=crop' }
+            { id: 'sup_1', title: 'Whey Protein Isolate', price: '₹4500', desc: '2kg, Chocolate flavor.', img: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=500&auto=format&fit=crop' },
+            { id: 'sup_2', title: 'Creatine Monohydrate', price: '₹1500', desc: '500g, Unflavored.', img: 'https://images.unsplash.com/photo-1579722820308-d74e571900a9?w=500&auto=format&fit=crop' },
+            { id: 'sup_3', title: 'Pre-Workout Blast', price: '₹2200', desc: '30 Servings, Fruit Punch.', img: 'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=500&auto=format&fit=crop' }
         ];
         localStorage.setItem(DB_SUPPLEMENTS, JSON.stringify(defaultSupps));
     }
