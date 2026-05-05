@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateStats();
     loadOrders();
     loadOffers();
+    loadSupplements();
     loadMembers();
     loadTickets();
 
@@ -46,6 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
             
             addOfferForm.reset();
             loadOffers();
+        });
+    }
+
+    // Add Supplement Form
+    const addSupplementForm = document.getElementById('addSupplementForm');
+    if (addSupplementForm) {
+        addSupplementForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('suppTitle').value;
+            const price = document.getElementById('suppPrice').value;
+            const desc = document.getElementById('suppDesc').value;
+            const img = document.getElementById('suppImg').value;
+
+            const supps = getDB(DB_SUPPLEMENTS);
+            supps.push({ id: generateId('sup'), title, price, desc, img });
+            setDB(DB_SUPPLEMENTS, supps);
+            
+            addSupplementForm.reset();
+            loadSupplements();
         });
     }
 });
@@ -119,6 +139,34 @@ function deleteOffer(id) {
         offers = offers.filter(o => o.id !== id);
         setDB(DB_OFFERS, offers);
         loadOffers();
+    }
+}
+
+// -- Supplements --
+function loadSupplements() {
+    const supps = getDB(DB_SUPPLEMENTS);
+    const grid = document.getElementById('adminSupplementsGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+
+    supps.forEach(sup => {
+        grid.innerHTML += `
+            <div class="card" style="padding: 1.5rem;">
+                <img src="${sup.img}" alt="${sup.title}" style="height:100px; object-fit:cover; border-radius:5px; margin-bottom:1rem; width:100%;">
+                <h4>${sup.title}</h4>
+                <div class="price" style="font-size: 1.2rem;">${sup.price}</div>
+                <button class="btn btn-danger btn-full" style="padding: 0.5rem; margin-top:1rem;" onclick="deleteSupplement('${sup.id}')">Delete</button>
+            </div>
+        `;
+    });
+}
+
+function deleteSupplement(id) {
+    if(confirm('Delete this supplement?')) {
+        let supps = getDB(DB_SUPPLEMENTS);
+        supps = supps.filter(s => s.id !== id);
+        setDB(DB_SUPPLEMENTS, supps);
+        loadSupplements();
     }
 }
 

@@ -13,6 +13,7 @@
         <ul class="admin-nav">
             <li><a href="#" class="active" data-target="orders">Manage Orders</a></li>
             <li><a href="#" data-target="offers">Manage Offers</a></li>
+            <li><a href="#" data-target="supplements">Manage Supplements</a></li>
             <li><a href="#" data-target="members">Gym Members</a></li>
             <li><a href="#" data-target="support">Support Tickets</a></li>
         </ul>
@@ -60,6 +61,20 @@
                 <button type="submit" class="btn">Add Offer</button>
             </form>
             <div class="grid" id="adminOffersGrid">
+            </div>
+        </section>
+
+        <!-- Supplements Section -->
+        <section id="supplements" class="admin-section">
+            <h3>Manage Supplements</h3>
+            <form id="addSupplementForm" class="admin-form">
+                <input type="text" id="suppTitle" placeholder="Product Name" required>
+                <input type="text" id="suppPrice" placeholder="Price (e.g. $60)" required>
+                <input type="text" id="suppDesc" placeholder="Description" required>
+                <input type="url" id="suppImg" placeholder="Image URL" required>
+                <button type="submit" class="btn">Add Product</button>
+            </form>
+            <div class="grid" id="adminSupplementsGrid">
             </div>
         </section>
 
