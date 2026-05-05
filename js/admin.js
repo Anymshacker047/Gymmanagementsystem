@@ -68,6 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
             loadSupplements();
         });
     }
+
+    // Add User Form
+    const addUserForm = document.getElementById('addUserForm');
+    if (addUserForm) {
+        addUserForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('addUserName').value;
+            const email = document.getElementById('addUserEmail').value;
+            const pass = document.getElementById('addUserPass').value;
+
+            const users = getDB(DB_USERS);
+            if (users.find(u => u.email === email)) {
+                alert('Email already registered!');
+                return;
+            }
+            users.push({ id: generateId('u'), name, email, password: pass, role: 'user' });
+            setDB(DB_USERS, users);
+            
+            addUserForm.reset();
+            loadMembers();
+            updateStats();
+        });
+    }
 });
 
 function updateStats() {
@@ -174,6 +197,7 @@ function deleteSupplement(id) {
 function loadMembers() {
     const users = getDB(DB_USERS);
     const tbody = document.getElementById('membersTableBody');
+    if (!tbody) return;
     tbody.innerHTML = '';
 
     users.forEach(u => {
@@ -183,9 +207,22 @@ function loadMembers() {
                 <td>${u.name}</td>
                 <td>${u.email}</td>
                 <td>${u.role}</td>
+                <td>
+                    ${u.role !== 'admin' ? `<button class="btn btn-danger" style="padding: 0.3rem 0.8rem; font-size: 0.9rem;" onclick="deleteUser('${u.id}')">Delete</button>` : ''}
+                </td>
             </tr>
         `;
     });
+}
+
+function deleteUser(id) {
+    if(confirm('Delete this user?')) {
+        let users = getDB(DB_USERS);
+        users = users.filter(u => u.id !== id);
+        setDB(DB_USERS, users);
+        loadMembers();
+        updateStats();
+    }
 }
 
 // -- Tickets --
