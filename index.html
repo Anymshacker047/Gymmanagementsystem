@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronForge Gym - Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">IronForge Gym</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#offers">Joining Offers</a></li>
+            <li><a href="#supplements">Supplements</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+        <div class="nav-actions">
+            <span id="userInfo"></span>
+            <a href="login.html" id="loginBtn" class="btn btn-outline">Login / Sign Up</a>
+            <button id="logoutBtn" class="btn btn-outline" style="display: none;">Logout</button>
+            <a href="admin.html" id="adminBtn" class="btn" style="display: none;">Admin Panel</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Body.<br>Unleash Your Potential.</h1>
+            <p>Join the most elite fitness community. Top-tier equipment, premium supplements, and expert guidance.</p>
+            <a href="#offers" class="btn btn-large">Join Now</a>
+        </div>
+    </header>
+
+    <section id="offers" class="section">
+        <h2 class="section-title">Exclusive Joining Offers</h2>
+        <div class="grid" id="offersGrid">
+            <!-- Offers will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <section id="supplements" class="section bg-darker">
+        <h2 class="section-title">Premium Supplements</h2>
+        <div class="grid" id="supplementsGrid">
+            <!-- Supplements will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 IronForge Gym. All rights reserved.</p>
+    </footer>
+
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

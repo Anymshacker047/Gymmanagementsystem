@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - IronForge Gym</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="sidebar">
+        <div class="logo">Admin Panel</div>
+        <ul class="admin-nav">
+            <li><a href="#" class="active" data-target="orders">Manage Orders</a></li>
+            <li><a href="#" data-target="offers">Manage Offers</a></li>
+            <li><a href="#" data-target="members">Gym Members</a></li>
+            <li><a href="#" data-target="support">Support Tickets</a></li>
+        </ul>
+        <a href="index.html" class="btn btn-outline" style="margin-top: 2rem; width: 100%; text-align: center;">Back to Site</a>
+    </div>
+
+    <div class="admin-content">
+        <header class="admin-header">
+            <h2>Dashboard</h2>
+            <div class="stats">
+                <div class="stat-box">Users: <span id="statUsers">0</span></div>
+                <div class="stat-box">Orders: <span id="statOrders">0</span></div>
+                <div class="stat-box">Tickets: <span id="statTickets">0</span></div>
+            </div>
+        </header>
+
+        <!-- Orders Section -->
+        <section id="orders" class="admin-section active">
+            <h3>Supplement & Gym Joining Orders</h3>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User</th>
+                            <th>Type</th>
+                            <th>Item Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section id="offers" class="admin-section">
+            <h3>Manage Joining Offers</h3>
+            <form id="addOfferForm" class="admin-form">
+                <input type="text" id="offerTitle" placeholder="Offer Title (e.g. 3 Months Pro)" required>
+                <input type="text" id="offerPrice" placeholder="Price (e.g. $100)" required>
+                <input type="text" id="offerDesc" placeholder="Description" required>
+                <button type="submit" class="btn">Add Offer</button>
+            </form>
+            <div class="grid" id="adminOffersGrid">
+            </div>
+        </section>
+
+        <!-- Members Section -->
+        <section id="members" class="admin-section">
+            <h3>Gym Members (Users)</h3>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="membersTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="admin-section">
+            <h3>Support Tickets</h3>
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>User Name</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="supportTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
